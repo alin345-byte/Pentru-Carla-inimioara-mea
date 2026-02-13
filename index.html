@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pentru Iubita mea frumoasa Carla 💝</title>
+
+<style>
+body{
+    margin:0;
+    font-family: 'Segoe UI', sans-serif;
+    text-align:center;
+    background: linear-gradient(-45deg, #ff9ecf, #ffcce6, #ff80bf, #ffb3d9);
+    background-size: 400% 400%;
+    animation: gradientMove 8s ease infinite;
+    overflow-x:hidden;
+    overflow-y:auto;
+    transition: background 1s ease;
+}
+
+@keyframes gradientMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+h1{
+    margin-top:50px;
+    font-size:30px;
+    color:white;
+    text-shadow:0 0 10px rgba(0,0,0,0.3);
+}
+
+.question{
+    font-size:44px;
+    margin:40px 0;
+    color:white;
+    text-shadow:0 0 10px rgba(0,0,0,0.4);
+}
+
+button{
+    padding:15px 35px;
+    font-size:20px;
+    border:none;
+    border-radius:25px;
+    cursor:pointer;
+    margin:15px;
+    transition: transform 0.2s;
+}
+
+button:hover{
+    transform: scale(1.1);
+}
+
+#yes{
+    background:#ff2e63;
+    color:white;
+    box-shadow:0 0 15px rgba(255,0,80,0.6);
+}
+
+#no{
+    background:black;
+    color:white;
+    position:absolute;
+}
+
+#troll{
+    margin-top:20px;
+    font-weight:bold;
+    color:white;
+}
+
+#letter{
+    opacity:0;
+    visibility:hidden;
+    padding:50px 20px;
+    font-size:20px;
+    line-height:1.9;
+    background:rgba(255,255,255,0.9);
+    min-height:100vh;
+    transition: opacity 2s ease;
+}
+
+#letter.show{
+    opacity:1;
+    visibility:visible;
+}
+
+.hearts{
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    pointer-events:none;
+}
+
+.heart{
+    position:absolute;
+    animation:fall linear infinite;
+    color:#ff004c;
+}
+
+@keyframes fall{
+    0%{ transform:translateY(-10%) scale(1); opacity:1;}
+    50%{ transform:scale(1.2);}
+    100%{ transform:translateY(110%) scale(1); opacity:0;}
+}
+</style>
+</head>
+
+<body>
+
+<div id="start">
+<h1>Pentru Iubita mea frumoasa Carla 💝</h1>
+<div class="question">Mă iubești? 😋</div>
+
+<button id="yes" onclick="showLetter()">Normalll</button>
+<button id="no" onclick="moveButton()">nu</button>
+
+<div id="troll"></div>
+</div>
+
+<div id="letter">
+<h2>Pentru tine, iubita mea frumoasă ❤️</h2>
+
+<p>
+Și câte nopți vei sta cu mine, câte zile vor urma…<br><br>
+
+Au trecut 2 ani și 3 luni și încă mă surprinde cât de mult însemni pentru mine.<br><br>
+
+Frumoasa mea mică, nu e vorba doar despre începuturi sau emoții de moment.  
+E despre tot ce am construit împreună.  
+E despre cum m-ai făcut să cresc, să învăț să iubesc matur și să prețuiesc ce contează cu adevărat.<br><br>
+
+Pentru mine nu ești doar iubita mea.  
+Ești prietena mea cea mai bună.  
+Ești omul cu care râd, cu care vorbesc orice, cu care pot fi eu fără mască.  
+Ești soțioara mea scumpă în sufletul meu.  
+Și ești cea mai frumoasă femeie din viața mea.<br><br>
+
+Îmi place felul în care mă atingi fără să spui nimic.  
+Îmi place cum mă privești când știi că sunt doar al tău.  
+Și uneori, când te văd zâmbind doar pentru mine,  
+îmi vine să te trag mai aproape și să-ți șoptesc cât de mult mă pierd în tine…  
+până uiți complet ce voiai să spui. 😏<br><br>
+
+După 2 ani și 3 luni, nu e doar pasiune.  
+E alegere.  
+E dor chiar și când ne-am văzut ieri.  
+E liniștea pe care o simt când te țin în brațe și știu că acolo îți e locul.<br><br>
+
+Și îți fac o promisiune:<br><br>
+
+Promit să te respect.  
+Promit să te protejez.  
+Promit să fiu sprijinul tău când îți e greu și bucuria ta când îți e bine.  
+Promit să nu las niciodată orgoliul să fie mai mare decât noi.  
+Și promit că nu voi pleca atunci când lucrurile devin dificile.<br><br>
+
+<strong>Ești fericirea mea și vreau să fim împreună pentru totdeauna 💝</strong>
+</p>
+
+<iframe id="music"
+width="300"
+height="170"
+style="border-radius:20px; margin-top:30px; box-shadow:0 0 20px rgba(255,0,100,0.5);"
+src=""
+frameborder="0"
+allow="autoplay; encrypted-media"
+allowfullscreen>
+</iframe>
+
+<div class="hearts" id="hearts"></div>
+</div>
+
+<script>
+function moveButton(){
+    const btn = document.getElementById("no");
+    const maxX = window.innerWidth - btn.offsetWidth;
+    const maxY = window.innerHeight - btn.offsetHeight;
+
+    btn.style.left = Math.random() * maxX + "px";
+    btn.style.top = Math.random() * maxY + "px";
+
+    document.getElementById("troll").innerHTML =
+    "Nu ai voie șmecherio 😑";
+}
+
+function showLetter(){
+    document.getElementById("start").style.display="none";
+    const letter = document.getElementById("letter");
+    letter.classList.add("show");
+
+    document.getElementById("music").src =
+    "https://www.youtube.com/embed/6HCnT_NqrQI?start=165&autoplay=1";
+
+    setTimeout(createHearts, 800);
+}
+
+function createHearts(){
+    const container=document.getElementById("hearts");
+    for(let i=0;i<50;i++){
+        let heart=document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML="❤️";
+        heart.style.left=Math.random()*100+"%";
+        heart.style.fontSize=(20+Math.random()*25)+"px";
+        heart.style.animationDuration=(4+Math.random()*4)+"s";
+        heart.style.top="-10%";
+        container.appendChild(heart);
+    }
+}
+</script>
+
+</body>
+                                                  </html>
