@@ -7,121 +7,102 @@
 
 <style>
 body{
-    margin:0;
-    font-family: 'Segoe UI', sans-serif;
-    text-align:center;
-    background: linear-gradient(-45deg, #ff9ecf, #ffcce6, #ff80bf, #ffb3d9);
-    background-size: 400% 400%;
-    animation: gradientMove 8s ease infinite;
-    overflow-x:hidden;
-    overflow-y:auto;
-    transition: background 1s ease;
+margin:0;
+padding:0;
+font-family: Arial, sans-serif;
+background: linear-gradient(135deg,#ff9ecf,#ff5fa2);
+color:white;
+text-align:center;
+overflow-x:hidden;
 }
 
-@keyframes gradientMove{
-    0%{background-position:0% 50%;}
-    50%{background-position:100% 50%;}
-    100%{background-position:0% 50%;}
+.container{
+padding:40px 20px;
 }
 
 h1{
-    margin-top:50px;
-    font-size:30px;
-    color:white;
-    text-shadow:0 0 10px rgba(0,0,0,0.3);
+font-size:28px;
 }
 
 .question{
-    font-size:44px;
-    margin:40px 0;
-    color:white;
-    text-shadow:0 0 10px rgba(0,0,0,0.4);
+font-size:40px;
+margin:40px 0;
 }
 
 button{
-    padding:15px 35px;
-    font-size:20px;
-    border:none;
-    border-radius:25px;
-    cursor:pointer;
-    margin:15px;
-    transition: transform 0.2s;
+padding:15px 30px;
+font-size:18px;
+border:none;
+border-radius:30px;
+cursor:pointer;
+margin:10px;
+transition:0.3s;
 }
 
-button:hover{
-    transform: scale(1.1);
+.yes{
+background:white;
+color:#ff3f8e;
+font-weight:bold;
 }
 
-#yes{
-    background:#ff2e63;
-    color:white;
-    box-shadow:0 0 15px rgba(255,0,80,0.6);
+.no{
+background:#ff3f8e;
+color:white;
+position:relative;
 }
 
-#no{
-    background:black;
-    color:white;
-    position:absolute;
-}
-
-#troll{
-    margin-top:20px;
-    font-weight:bold;
-    color:white;
+#message{
+margin-top:20px;
+font-size:18px;
 }
 
 #letter{
-    opacity:0;
-    visibility:hidden;
-    padding:50px 20px;
-    font-size:20px;
-    line-height:1.9;
-    background:rgba(255,255,255,0.9);
-    min-height:100vh;
-    transition: opacity 2s ease;
+display:none;
+padding:60px 20px;
+min-height:100vh;
+background:black;
+position:relative;
+overflow-y:auto;
 }
 
-#letter.show{
-    opacity:1;
-    visibility:visible;
-}
-
-.hearts{
-    position:fixed;
-    width:100%;
-    height:100%;
-    top:0;
-    left:0;
-    pointer-events:none;
+.letter-text{
+max-width:700px;
+margin:auto;
+font-size:20px;
+line-height:1.8;
+position:relative;
+z-index:2;
 }
 
 .heart{
-    position:absolute;
-    animation:fall linear infinite;
-    color:#ff004c;
+position:absolute;
+color:#ff4da6;
+font-size:20px;
+animation:float 5s linear infinite;
 }
 
-@keyframes fall{
-    0%{ transform:translateY(-10%) scale(1); opacity:1;}
-    50%{ transform:scale(1.2);}
-    100%{ transform:translateY(110%) scale(1); opacity:0;}
+@keyframes float{
+0%{transform:translateY(100vh) scale(0.5);}
+100%{transform:translateY(-10vh) scale(1.2);}
 }
 </style>
 </head>
 
 <body>
 
-<div id="start">
+<div class="container" id="start">
 <h1>Pentru Iubita mea frumoasa Carla 💝</h1>
 <div class="question">Mă iubești? 😋</div>
 
-<button id="yes" onclick="showLetter()">Normalll</button>
-<button id="no" onclick="moveButton()">nu</button>
+<button class="yes" onclick="showLetter()">Normalll</button>
+<button class="no" onmouseover="moveButton()">nu</button>
 
-<div id="troll"></div>
+<div id="message"></div>
 </div>
 
 <div id="letter">
+<div class="letter-text">
+
 <h2>Pentru tine, iubita mea frumoasă ❤️</h2>
 
 <p>
@@ -161,57 +142,46 @@ Promit să nu las niciodată orgoliul să fie mai mare decât noi.
 <strong>Ești fericirea mea și vreau să fim împreună pentru totdeauna 💝</strong>
 </p>
 
-<iframe id="music"
-width="300"
-height="170"
-style="border-radius:20px; margin-top:30px; box-shadow:0 0 20px rgba(255,0,100,0.5);"
-src=""
-frameborder="0"
-allow="autoplay; encrypted-media"
-allowfullscreen>
-</iframe>
-
-<div class="hearts" id="hearts"></div>
 </div>
+</div>
+
+<audio id="music" preload="auto">
+<source src="poem.mp3" type="audio/mpeg">
+</audio>
 
 <script>
 function moveButton(){
-    const btn = document.getElementById("no");
-    const maxX = window.innerWidth - btn.offsetWidth;
-    const maxY = window.innerHeight - btn.offsetHeight;
-
-    btn.style.left = Math.random() * maxX + "px";
-    btn.style.top = Math.random() * maxY + "px";
-
-    document.getElementById("troll").innerHTML =
-    "Nu ai voie șmecherio 😑";
+const button=document.querySelector(".no");
+button.style.position="absolute";
+button.style.left=Math.random()*80+"%";
+button.style.top=Math.random()*80+"%";
+document.getElementById("message").innerText="Nu ai voie șmecherio 😑";
 }
 
 function showLetter(){
-    document.getElementById("start").style.display="none";
-    const letter = document.getElementById("letter");
-    letter.classList.add("show");
+document.getElementById("start").style.display="none";
+document.getElementById("letter").style.display="block";
 
-    document.getElementById("music").src =
-    "https://www.youtube.com/embed/6HCnT_NqrQI?start=165&autoplay=1";
+const music=document.getElementById("music");
+music.currentTime=165;
+music.play();
 
-    setTimeout(createHearts, 800);
+setTimeout(createHearts,500);
 }
 
 function createHearts(){
-    const container=document.getElementById("hearts");
-    for(let i=0;i<50;i++){
-        let heart=document.createElement("div");
-        heart.classList.add("heart");
-        heart.innerHTML="❤️";
-        heart.style.left=Math.random()*100+"%";
-        heart.style.fontSize=(20+Math.random()*25)+"px";
-        heart.style.animationDuration=(4+Math.random()*4)+"s";
-        heart.style.top="-10%";
-        container.appendChild(heart);
-    }
+setInterval(()=>{
+const heart=document.createElement("div");
+heart.classList.add("heart");
+heart.innerHTML="💖";
+heart.style.left=Math.random()*100+"%";
+heart.style.animationDuration=(Math.random()*3+2)+"s";
+document.getElementById("letter").appendChild(heart);
+
+setTimeout(()=>heart.remove(),5000);
+},300);
 }
 </script>
 
 </body>
-                                                  </html>
+</html>
